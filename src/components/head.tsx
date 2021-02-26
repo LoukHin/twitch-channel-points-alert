@@ -2,8 +2,8 @@ import NextHead from 'next/head'
 import { useRouter } from 'next/router'
 
 interface Props {
-    title: string
-    description: string
+    title?: string
+    description?: string
     keywords?: string
     image?: string
 }
@@ -11,17 +11,19 @@ interface Props {
 const Head: React.FC<Props> = (props) => {
     const {
         title,
-        description,
+        description = '',
         image = 'https://app.loukhin.com/twitch-tools/default-share-image.png',
         children
     } = props
+
+    const pageTitle = (title) ? `${title} - LoukHin's Twitch tools` : 'LoukHin&apos;s twitch tools'
 
     const router = useRouter()
     const currentUrl = router.asPath
 
     return (
         <NextHead>
-            <title>{title}</title>
+            <title>{pageTitle}</title>
 
             <meta charSet='UTF-8' />
             <meta
@@ -31,7 +33,7 @@ const Head: React.FC<Props> = (props) => {
             <meta name='description' content={description} />
             <meta name='twitter:card' content='summary_large_image' />
             <meta property='og:url' content={currentUrl} />
-            <meta property='og:title' content={title} />
+            <meta property='og:title' content={pageTitle} />
             <meta property='og:description' content={description} />
             <meta property='og:type' content='website' />
             <meta property='og:image' content={image} />
