@@ -1,5 +1,5 @@
 {
-    "name": "twitch-tools",
+    "name": "twitchy",
     "version": "1.0.0",
     "main": "src/server.ts",
     "scripts": {
@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next"
     },
-    "repository": "https://github.com/LoukHin/twitch-tools",
+    "repository": "https://github.com/LoukHin/twitchy",
     "author": "LoukHin",
     "license": "MIT",
     "private": false,
