@@ -1,57 +1,39 @@
-import { NextPage, GetServerSidePropsWithUser, User } from 'next'
+import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'components/head'
 import Button from 'components/button'
+import TopNav from 'components/topnav'
+import { signOut, useSession } from 'next-auth/client'
+import { useEffect } from 'react'
 
-type Props = {
-    data: {
-        user?: User
-    }
-}
-
-const Index: NextPage<Props> = (props) => {
+const Index: NextPage = (props) => {
+    const [session, loading] = useSession()
     const router = useRouter()
 
-    const {
-        data: { user }
-    } = props
+    useEffect(() => {
+        if (!loading && !session) router.push('/auth/signin')
+    }, [session, loading])
 
     return (
         <>
             <Head title='test'></Head>
-            {user ?
-                <>
-                    {user.display_name}
-                    <img src={user.profile_image_url} />
-                    <Button
-                        onClick={() => {router.push('/logout')}}
-                        className='self-center text-white text-lg duration-200 bg-twitch-purple hover:bg-twitch-purple-dark'
-                    >
-                        Log Out
-                    </Button>
-                </>
-            :
-                <Button
-                    onClick={() => {router.push('/login')}}
-                    className='self-center text-white text-lg duration-200 bg-twitch-purple hover:bg-twitch-purple-dark'
-                >
-                    Log in
-                </Button>
-            }
+            <TopNav></TopNav>
+            {session?.user?.image ? <img src={session.user.image} /> : ''}
+            Signed in as {JSON.stringify(session?.user?.name)} <br />
+            <Button
+                onClick={() => signOut()}
+                className='self-center text-white text-lg duration-200 bg-twitch-purple hover:bg-twitch-purple-dark'
+            >
+                Sign out
+            </Button>
+
+            <div className="h-80"></div>
+            <div className="h-80"></div>
+            <div className="h-80"></div>
+            <div className="h-80"></div>
+            <div className="h-80"></div>
         </>
     )
-}
-
-export const getServerSideProps: GetServerSidePropsWithUser = async (context) => {
-    const { user } = context.req
-
-    return {
-        props: {
-            data: {
-                user: user || null
-            }
-        }
-    }
 }
 
 export default Index

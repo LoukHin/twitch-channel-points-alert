@@ -1,3 +1,4 @@
+import config from 'lib/config'
 import NextHead from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -12,14 +13,14 @@ const Head: React.FC<Props> = (props) => {
     const {
         title,
         description = '',
-        image = 'https://app.loukhin.com/twitch-tools/default-share-image.png',
+        image = `${config.appURL}/static/default-share-image.png`,
         children
     } = props
 
-    const pageTitle = (title) ? `${title} - LoukHin's Twitch tools` : 'LoukHin&apos;s twitch tools'
+    const pageTitle = (title) ? `${title} - ${config.appName}` : config.appName
 
     const router = useRouter()
-    const currentUrl = router.asPath
+    const currentURL = router.asPath
 
     return (
         <NextHead>
@@ -32,7 +33,7 @@ const Head: React.FC<Props> = (props) => {
             />
             <meta name='description' content={description} />
             <meta name='twitter:card' content='summary_large_image' />
-            <meta property='og:url' content={currentUrl} />
+            <meta property='og:url' content={currentURL} />
             <meta property='og:title' content={pageTitle} />
             <meta property='og:description' content={description} />
             <meta property='og:type' content='website' />

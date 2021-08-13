@@ -3,22 +3,19 @@
     "version": "1.0.0",
     "main": "src/server.ts",
     "scripts": {
-        "dev": "ts-node-dev --ignore-watch [src/**/*.tsx] -r dotenv/config -- src/server.ts",
-        "build": "next build && tsc src/server.ts",
-        "start": "node src/server.js"
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next"
     },
     "repository": "https://github.com/LoukHin/twitch-tools",
     "author": "LoukHin",
     "license": "MIT",
     "private": false,
     "dependencies": {
-        "cookie-parser": "^1.4.5",
-        "cookie-session": "^1.4.0",
-        "express": "^4.17.1",
-        "mongodb": "^3.6.4",
-        "next": "^10.0.7",
-        "passport": "^0.4.1",
-        "passport-twitch-latest": "^1.0.0",
+        "@types/next-auth": "^3.15.0",
+        "mysql2": "^2.3.0",
+        "next": "^11.1.0",
+        "next-auth": "^3.28.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1"
     },
@@ -27,19 +24,10 @@
         "@fortawesome/free-brands-svg-icons": "^5.15.2",
         "@fortawesome/free-solid-svg-icons": "^5.15.2",
         "@fortawesome/react-fontawesome": "^0.1.14",
-        "@types/cookie-parser": "^1.4.2",
-        "@types/cookie-session": "^2.0.42",
-        "@types/mongodb": "^3.6.8",
-        "@types/node": "^14.14.31",
-        "@types/passport": "^1.0.6",
-        "@types/passport-twitch-latest": "^1.0.0",
         "@types/react": "^17.0.2",
         "autoprefixer": "^10.2.4",
-        "dotenv": "^8.2.0",
         "postcss": "^8.2.6",
         "tailwindcss": "^2.0.3",
-        "ts-node": "^9.1.1",
-        "ts-node-dev": "^1.1.6",
         "typescript": "^4.2.2"
     }
 }
