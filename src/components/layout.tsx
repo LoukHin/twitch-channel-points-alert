@@ -31,7 +31,7 @@ const sidebarMenuItems = [
             {
                 name: 'Channel Points',
                 icon: <CurrencyDollarIcon className='h-5 w-5' />,
-                href: '/channel-point'
+                href: '/channel-points'
             }
         ]
     }

@@ -4,8 +4,8 @@ import Head from 'components/head'
 const ChannelPoints: NextPage = (props) => {
     return (
         <>
-            <Head title='Channel Point'></Head>
-            Channel point
+            <Head title='Channel Points'></Head>
+            Channel points
         </>
     )
 }
