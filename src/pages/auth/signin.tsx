@@ -3,9 +3,6 @@ import { GetServerSideProps, NextPage } from 'next'
 import type { CommonProviderOptions } from 'next-auth/providers'
 import { getProviders, signIn, getCsrfToken, getSession } from 'next-auth/client'
 
-import { faTwitch } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import Head from 'components/head'
 import Button from 'components/button'
 import config from 'lib/config'
@@ -34,7 +31,6 @@ const SignIn: NextPage<{ providers: Array<CommonProviderOptions> }> = ({ provide
                             }
                             className='w-full self-center text-white text-lg duration-200 bg-twitch-purple hover:bg-twitch-purple-dark'
                         >
-                            <FontAwesomeIcon icon={faTwitch} className='mr-2' />
                             Sign in with {provider.name}
                         </Button>
                     ))}

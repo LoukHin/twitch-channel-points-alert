@@ -17,36 +17,26 @@ export default NextAuth({
     pages: {
         signIn: '/auth/signin'
     },
-
+    jwt: {
+        signingKey: config.jwtSigningKey
+    },
+    session: {
+        jwt: true
+    },
     callbacks: {
-        /**
-         * @param  {object} user     User object
-         * @param  {object} account  Provider account
-         * @param  {object} profile  Provider profile
-         * @return {boolean|string}  Return `true` to allow sign in
-         *                           Return `false` to deny access
-         *                           Return `string` to redirect to (eg.: "/unauthorized")
-         */
-        async signIn(user, account, profile) {
-            const isAllowedToSignIn = true
-            if (isAllowedToSignIn) {
-                return true
-            } else {
-                // Return false to display a default error message
-                return false
-                // Or you can return a URL to redirect to:
-                // return '/unauthorized'
+        async jwt(token, user, account, profile, isNewUser) {
+            if (account && user) {
+                return {
+                    accessToken: account.accessToken,
+                    accessTokenExpires: Date.now() + account.expires_in! * 1000,
+                    refreshToken: account.refresh_token,
+                    user
+                }
             }
+            return token
         },
-        /**
-         * @param  {string} url      URL provided as callback URL by the client
-         * @param  {string} baseUrl  Default base URL of site (can be used as fallback)
-         * @return {string}          URL the client will be redirect to
-         */
-        async redirect(url, baseUrl) {
-          return url.startsWith(baseUrl)
-            ? url
-            : baseUrl
+        async session(session, user) {
+            return user
         }
     }
 })

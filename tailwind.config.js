@@ -1,8 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
 
 module.exports = {
-    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    purge: ['src/pages/**/*.{js,ts,jsx,tsx}', 'src/components/**/*.{js,ts,jsx,tsx}'],
     darkMode: false,
     theme: {
         extend: {
@@ -11,6 +10,9 @@ module.exports = {
                     DEFAULT: '#9146ff',
                     dark: '#772ce8'
                 }
+            },
+            minHeight: {
+                'full-nav': 'calc(100vh - 3.5rem)'
             }
         },
         fontFamily: {
