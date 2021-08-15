@@ -17,7 +17,7 @@ const Head: React.FC<Props> = (props) => {
         children
     } = props
 
-    const pageTitle = (title) ? `${title} - ${config.appName}` : config.appName
+    const pageTitle = title ? `${title} - ${config.appName}` : config.appName
 
     const router = useRouter()
     const currentURL = router.asPath
@@ -27,12 +27,10 @@ const Head: React.FC<Props> = (props) => {
             <title>{pageTitle}</title>
 
             <meta charSet='UTF-8' />
-            <meta
-                name='viewport'
-                content='width=device-width, initial-scale=1.0'
-            />
+            <meta name='viewport' content='width=device-width, initial-scale=1.0' />
             <meta name='description' content={description} />
             <meta name='twitter:card' content='summary_large_image' />
+            <meta name='theme-color' content='#fbbf24' media='(prefers-color-scheme: light)' />
             <meta property='og:url' content={currentURL} />
             <meta property='og:title' content={pageTitle} />
             <meta property='og:description' content={description} />
