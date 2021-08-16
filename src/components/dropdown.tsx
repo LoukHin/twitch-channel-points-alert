@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 
-import { kebabCase } from 'lib/utls'
+import { kebabCase } from 'lib/utils'
 
 type menuItem = {
     name: string

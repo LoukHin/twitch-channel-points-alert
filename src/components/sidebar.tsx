@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Disclosure, Transition } from '@headlessui/react'
-import { kebabCase } from 'lib/utls'
+import { kebabCase } from 'lib/utils'
 import React from 'react'
 
 type menuItem = {
